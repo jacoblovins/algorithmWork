@@ -18,10 +18,30 @@ const digitCount = (num) => {
     return Math.floor(Math.log10(Math.abs(num))) + 1;
 }
 
+
+// mostDigits(nums) -- Given an array of numbers, returns the number o fdigits in the largest number in the list
+
+const mostDigits = (nums) => {
+    let maxDigits = 0;
+    for(let i = 0; i < nums.length; i++){
+        maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+    }
+    return maxDigits;
+}
+
+
+        // mostDigits helper tests
+console.log(mostDigits([1234, 56, 7]));     // 4
+console.log(mostDigits([1, 1, 11111, 1]));  // 5
+console.log(mostDigits([12, 34, 56, 78]));  // 2
+
+
+
         //digitCount helper tests
-console.log(digitCount(1));    // 1
-console.log(digitCount(25));   // 2
-console.log(digitCount(314));  // 3
+// console.log(digitCount(1));    // 1
+// console.log(digitCount(25));   // 2
+// console.log(digitCount(314));  // 3
+
 
 
         // getDigit helper tests
