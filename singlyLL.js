@@ -143,10 +143,38 @@ class SinglyLinkedList {
             return true;
         }
         return false;
-
     }
 
+    // insert() - adding a node to the linked list at a specific position
 
+    // Function takes in an index and a value
+    // If the index is less than zero or greater than the length, return false
+    // If the index is the same as the length, push a new node to the end of the list
+    // If the index is 0, unshift a new node to the start of the list
+    // Otherwise using the get method, acces the node at the index -1
+    // Set the next property on that node to be the new node
+    // Set the next property on the new node to be the previous next
+    // Increment the length
+    // Return true
+
+    insert(index, val){
+        if(index < 0 || index > this.length) return false;
+        if(index === this.length){
+            this.push(val);
+            return true;
+        } 
+        if(index === 0){
+            this.unshift(val);
+            return true;
+        }
+        const newNode = new Node(val);
+        const prev = this.get(index-1);
+        const temp = prev.next;
+        prev.next = newNode;
+        newNode.next = temp;
+        this.length++;
+        return true;
+    }
 }
 
 const list = new SinglyLinkedList()
@@ -161,5 +189,6 @@ list.pop()
 list.shift()
 list.unshift("First")
 list.set(0, "Changed!")
+list.insert(1, "Second changed!")
 console.log(list);
-console.log(list.get(0));
+console.log(list.get(1))
