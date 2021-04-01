@@ -49,7 +49,7 @@ class SinglyLinkedList {
     // Decrement the length of the list by 1
     // If you are popping the last item off the list, the head and tail need to be set to null
     // Return teh value of the node removed
-    
+
     pop(){
         if(!this.head) return undefined;
         let current = this.head;
@@ -68,6 +68,29 @@ class SinglyLinkedList {
         return current;
     }
 
+    // Shift() removing the first node
+    // O(1) very quick
+
+    // If there are no nodes, return undefined
+    // Store the current head property in a variable
+    // Set the head property to be the current head's next property
+    // Decrement the length by 1
+    // Return the value of the node removed
+
+
+
+    shift(){
+        if(!this.head) return undefined;
+        let currentHead = this.head;
+        this.head = currentHead.next;
+        this.length--;
+        if(this.length === 0){
+            this.tail = null;
+        }
+        return currentHead;
+
+    }
+
 
 }
 
@@ -76,5 +99,9 @@ list.push("Hello")
 list.push("GoodBye")
 list.push("Another thing")
 list.push("something else")
+list.push(1)
+list.push(2)
+list.push(3)
 list.pop()
+list.shift()
 console.log(list);
