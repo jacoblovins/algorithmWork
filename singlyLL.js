@@ -24,6 +24,7 @@ class SinglyLinkedList {
         this.length = 0;
     }
 
+    // Adds to the end of the list
     push(val){
         const newNode = new Node(val);
         // if the list is empty...does not have to do with the node we just created
@@ -38,6 +39,36 @@ class SinglyLinkedList {
         return this;
     }
 
+    // POP removes a node from the end of the linked list
+
+    // If there are no nodes in the list, return undefined
+    // Loop through the list until you reach the tail
+    // Store the previous node in a variable
+    // Set the next property of the 2nd to last node to be null
+    // Set the tail to be the 2nd to last node
+    // Decrement the length of the list by 1
+    // If you are popping the last item off the list, the head and tail need to be set to null
+    // Return teh value of the node removed
+    
+    pop(){
+        if(!this.head) return undefined;
+        let current = this.head;
+        let newTail = current;
+        while(current.next){
+            newTail = current;
+            current = current.next;
+        }
+        this.tail = newTail;
+        this.tail.next = null;
+        this.length--;
+        if(this.length === 0){
+            this.head = null;
+            this.tail = null;
+        }
+        return current;
+    }
+
+
 }
 
 const list = new SinglyLinkedList()
@@ -45,4 +76,5 @@ list.push("Hello")
 list.push("GoodBye")
 list.push("Another thing")
 list.push("something else")
+list.pop()
 console.log(list);
