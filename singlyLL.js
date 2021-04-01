@@ -129,6 +129,23 @@ class SinglyLinkedList {
         return current;
     }
 
+    // set() - changing the value of a node based on it's position in the linked list
+
+    // Function accepts an index and a value to update it to
+    // use your get() function to find the node
+    // if the node is not found, return false
+    // if the node is found, set the value of that node to be the value passed to the function and return true
+
+    set(index, val){
+        const foundNode = this.get(index);
+        if(foundNode){
+            foundNode.val = val;
+            return true;
+        }
+        return false;
+
+    }
+
 
 }
 
@@ -143,5 +160,6 @@ list.push(3)
 list.pop()
 list.shift()
 list.unshift("First")
+list.set(0, "Changed!")
 console.log(list);
-console.log(list.get(2));
+console.log(list.get(0));
