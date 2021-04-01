@@ -112,6 +112,23 @@ class SinglyLinkedList {
         return this;
     }
 
+    // get() - retrieving a node by it's position in the linked list
+
+    // Function should accept an index
+    // If the index is less than zero or greater than or equal to the length of the list, return null
+    // Loop through the list until you reach the index and return the node at that specific index
+
+    get(index){
+        if(index < 0 || index >= this.length) return null;
+        let counter = 0;
+        let current = this.head;
+        while(counter != index){
+            current = current.next;
+            counter++;
+        }
+        return current;
+    }
+
 
 }
 
@@ -127,3 +144,4 @@ list.pop()
 list.shift()
 list.unshift("First")
 console.log(list);
+console.log(list.get(2));
