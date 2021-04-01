@@ -26,7 +26,7 @@ class SinglyLinkedList {
 
     push(val){
         const newNode = new Node(val);
-        // if the list is empty
+        // if the list is empty...does not have to do with the node we just created
         if(!this.head){
             this.head = newNode;
             this.tail = this.head;
@@ -39,3 +39,10 @@ class SinglyLinkedList {
     }
 
 }
+
+const list = new SinglyLinkedList()
+list.push("Hello")
+list.push("GoodBye")
+list.push("Another thing")
+list.push("something else")
+console.log(list);
