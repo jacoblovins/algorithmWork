@@ -198,6 +198,33 @@ class SinglyLinkedList {
         return removed;
     }
 
+    // reverse()
+    
+    // Swap the head and tail
+    // create a variable called next
+    // create a variable called previous
+    // Create a variable called node and initialize it to the head property
+    // Loop through the list
+    // Set next to be the next property on whatever node is
+    // set the next property on the node to be whatever the prev is
+    // set prev to be the value of the node variable
+    // Set thenode variable to be teh value of the next variable
+
+    // Print function to make checking our work easier
+    print(){
+        let arr = [];
+        let current = this.head;
+        while(current){
+            arr.push(current.val);
+            current = current.next;
+        }
+        console.log(arr);
+    }
+
+    reverse(){
+        
+    }
+
 }
 
 
@@ -216,5 +243,5 @@ list.unshift("First")
 // list.insert(1, "Second changed!")
 list.remove(1)
 
-console.log(list);
+list.print()
 // console.log(list.get(1))
