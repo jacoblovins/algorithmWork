@@ -222,7 +222,18 @@ class SinglyLinkedList {
     }
 
     reverse(){
-        
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        let next = null;
+        let prev = null;
+        for(let i = 0; i < this.length; i++){
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+        return this;
     }
 
 }
@@ -243,5 +254,7 @@ list.unshift("First")
 // list.insert(1, "Second changed!")
 list.remove(1)
 
+list.print()
+list.reverse()
 list.print()
 // console.log(list.get(1))
