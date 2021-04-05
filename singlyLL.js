@@ -222,10 +222,9 @@ class SinglyLinkedList {
     }
 
     reverse(){
-        const tempHead = this.head;
+        let current = this.head;
         this.head = this.tail;
-        this.tail = tempHead;
-        let current = tempHead;
+        this.tail = current;
         let prev = null;
         let next = null;
 
