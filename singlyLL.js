@@ -222,20 +222,21 @@ class SinglyLinkedList {
     }
 
     reverse(){
-        let node = this.head;
+        const tempHead = this.head;
         this.head = this.tail;
-        this.tail = node;
-        let next = null;
+        this.tail = tempHead;
+        let current = tempHead;
         let prev = null;
+        let next = null;
+
         for(let i = 0; i < this.length; i++){
-            next = node.next;
-            node.next = prev;
-            prev = node;
-            node = next;
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
         }
         return this;
     }
-
 }
 
 
@@ -258,3 +259,5 @@ list.print()
 list.reverse()
 list.print()
 // console.log(list.get(1))
+console.log(list.head)
+console.log(list.tail)
