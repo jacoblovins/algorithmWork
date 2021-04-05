@@ -12,4 +12,51 @@ class DoublyLinkedList{
         this.tail = null;
         this.length = 0;
     }
+
+    // Push() adding a new node to the end of the DLL
+
+    // Create a new node with the value passed to the function
+    // If the head property is null set the head and tail to be the newly created node
+    // If not, set the next property on the tail to be that node
+    // Set the previous property on the newly created node to be the tail
+    // Set the tail property to be the new node we added
+    // Increment the length
+    // Return the list
+
+    push(val){
+        const newNode = new Node(val);
+        if(this.length === 0){
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            this.tail.next = newNode;
+            newNode.prev = this.tail;
+            this.tail = newNode;
+        }
+        this.length++;
+        return this;
+    }
 }
+
+const list = new DoublyLinkedList()
+list.push("Hello")
+list.push("GoodBye")
+list.push("Another thing")
+list.push("something else")
+list.push(1)
+list.push(2)
+list.push(3)
+// list.pop()
+// list.shift()
+// list.unshift("First")
+// list.set(0, "Changed!")
+// list.insert(1, "Second changed!")
+// list.remove(1)
+
+// list.print()
+// list.reverse()
+// list.print()
+// console.log(list.get(1))
+console.log(list)
+console.log(list.head)
+console.log(list.tail)
