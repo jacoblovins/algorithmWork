@@ -75,7 +75,7 @@ class DoublyLinkedList{
 
     shift(){
         if(this.length === 0) return undefined;
-        let current = this.head;
+        const current = this.head;
         if(this.length === 1){
             this.head = null;
             this.tail = null;
@@ -88,15 +88,16 @@ class DoublyLinkedList{
     }
 }
 
-const list = new DoublyLinkedList()
-list.push("Hello")
-list.push("GoodBye")
-list.push("Another thing")
-list.push("something else")
-list.push(1)
-list.push(2)
-list.push(3)
-list.pop()
+const list = new DoublyLinkedList();
+list.push("Hello");
+list.push("GoodBye");
+list.push("Another thing");
+list.push("something else");
+list.push(1);
+list.push(2);
+list.push(3);
+list.pop();
+list.shift();
 // list.shift()
 // list.unshift("First")
 // list.set(0, "Changed!")
@@ -107,6 +108,6 @@ list.pop()
 // list.reverse()
 // list.print()
 // console.log(list.get(1))
-console.log(list)
-console.log(list.head)
-console.log(list.tail)
+console.log(list);
+console.log(list.head);
+console.log(list.tail);
