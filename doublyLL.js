@@ -61,6 +61,24 @@ class DoublyLinkedList{
         this.length--;
         return poppedNode;
     }
+
+    // shift() removing a node from the beginning of the doubly linked list
+
+    // 
+
+    shift(){
+        if(this.length === 0) return undefined;
+        let current = this.head;
+        if(this.length === 1){
+            this.head = null;
+            this.tail = null;
+        }
+        this.head = current.next;
+        this.head.prev = null;
+        current.next = null;
+        this.length--;
+        return current;
+    }
 }
 
 const list = new DoublyLinkedList()
