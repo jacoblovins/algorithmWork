@@ -68,7 +68,7 @@ class DoublyLinkedList{
     // Store the current head property in a variable
     // If the length is 1, set the head and tail to null
     // Update the head to be the next fo the current
-    // Set teh head's prev property to null
+    // Set the head's prev property to null
     // Set the current next to null
     // Decrement the length
     // Return the old head
@@ -93,9 +93,9 @@ class DoublyLinkedList{
     // Create a new node with the value passed to the function
     // If the length is 0, Set the head to be the new node, and set the tail to be the new node
     // Otherwise..
-    // Set teh prev property on the head of the list to be the new node
-    // Set teh next property on the new node to be the head property
-    // Update the head to be teh new node
+    // Set the prev property on the head of the list to be the new node
+    // Set the next property on the new node to be the head property
+    // Update the head to be the new node
 
     // Increment the length
     // Return the list
@@ -111,6 +111,21 @@ class DoublyLinkedList{
         this.head = newNode;
         this.length++;
         return this;
+    }
+
+    // get() accessing a node in a doubly linked list by its position
+    // could use the same method for singly linked list but there is an optimization for a doubly linked list
+
+    // If the index is less than 0 or greater or equal to the length, return null
+    // If the index is less than or equal to half the length of the list
+    // --loop through the list starting from the head and loop towards the middle
+    // --return the node once it is found
+    // If the index is greater than half the length of the list
+    // --loop through the list starting from the tail and loop towards the middle
+    // --return the node once it is found 
+
+    get(){
+
     }
 }
 
