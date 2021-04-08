@@ -64,7 +64,14 @@ class DoublyLinkedList{
 
     // shift() removing a node from the beginning of the doubly linked list
 
-    // 
+    // If length is 0 return undefined
+    // Store the current head property in a variable
+    // If the length is 1, set the head and tail to null
+    // Update the head to be the next fo the current
+    // Set teh head's prev property to null
+    // Set the current next to null
+    // Decrement the length
+    // Return the old head
 
     shift(){
         if(this.length === 0) return undefined;
