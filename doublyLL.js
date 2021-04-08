@@ -87,6 +87,31 @@ class DoublyLinkedList{
         this.length--;
         return current;
     }
+
+    // unshift()  adding a node to the beginning of the doubly linked list
+
+    // Create a new node with the value passed to the function
+    // If the length is 0, Set the head to be the new node, and set the tail to be the new node
+    // Otherwise..
+    // Set teh prev property on the head of the list to be the new node
+    // Set teh next property on the new node to be the head property
+    // Update the head to be teh new node
+
+    // Increment the length
+    // Return the list
+
+    unshift(val){
+        const newNode = new Node(val);
+        if(this.length !== 0){
+            newNode.next = this.head;
+            this.head.prev = newNode;
+        } else {
+            this.tail = newNode;
+        }
+        this.head = newNode;
+        this.length++;
+        return this;
+    }
 }
 
 const list = new DoublyLinkedList();
@@ -99,6 +124,7 @@ list.push(2);
 list.push(3);
 list.pop();
 list.shift();
+list.unshift("New Guy!");
 // list.shift()
 // list.unshift("First")
 // list.set(0, "Changed!")
