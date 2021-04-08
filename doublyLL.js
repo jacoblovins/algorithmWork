@@ -116,7 +116,7 @@ class DoublyLinkedList{
     // get() accessing a node in a doubly linked list by its position
     // could use the same method for singly linked list but there is an optimization for a doubly linked list
 
-    // If the index is less than 0 or greater or equal to the length, return null
+    // If the index is less than 0 or greater or equal to the length, return undefined
     // If the index is less than or equal to half the length of the list
     // --loop through the list starting from the head and loop towards the middle
     // --return the node once it is found
@@ -124,7 +124,14 @@ class DoublyLinkedList{
     // --loop through the list starting from the tail and loop towards the middle
     // --return the node once it is found 
 
-    get(){
+    get(index){
+        if(index < 0 || index >= this.length) return undefined;
+        let count = 0;
+        let current = this.head;
+    while(count != index){
+        
+    }
+
 
     }
 }
