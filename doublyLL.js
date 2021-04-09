@@ -113,7 +113,7 @@ class DoublyLinkedList{
         return this;
     }
 
-    // get() accessing a node in a doubly linked list by its position
+    // get() accessing a node in a doubly linked list by its position (index)
     // could use the same method for singly linked list but there is an optimization for a doubly linked list
 
     // If the index is less than 0 or greater or equal to the length, return undefined
@@ -128,10 +128,13 @@ class DoublyLinkedList{
         if(index < 0 || index >= this.length) return undefined;
         let count = 0;
         let current = this.head;
-    while(count != index){
-        
-    }
 
+        while(count != index){
+            current = current.next;
+            count++;
+            
+        }
+        return current;
 
     }
 }
@@ -156,7 +159,7 @@ list.unshift("New Guy!");
 // list.print()
 // list.reverse()
 // list.print()
-// console.log(list.get(1))
-console.log(list);
-console.log(list.head);
-console.log(list.tail);
+console.log(list.get(-1))
+// console.log(list);
+// console.log(list.head);
+// console.log(list.tail);
