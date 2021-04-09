@@ -126,13 +126,21 @@ class DoublyLinkedList{
 
     get(index){
         if(index < 0 || index >= this.length) return undefined;
-        let count = 0;
-        let current = this.head;
-
-        while(count != index){
-            current = current.next;
-            count++;
-            
+        let count, current;
+        if(index <= this.length/2){
+            count = 0;
+            current = this.head;
+            while(count !== index){
+                current = current.next;
+                count++;
+            }
+        } else {
+            count = this.length - 1;
+            current = this.tail;
+            while(count !== index){
+                current = current.prev;
+                count--;
+            }
         }
         return current;
 
@@ -159,7 +167,7 @@ list.unshift("New Guy!");
 // list.print()
 // list.reverse()
 // list.print()
-console.log(list.get(-1))
+console.log(list.get(5))
 // console.log(list);
 // console.log(list.head);
 // console.log(list.tail);
