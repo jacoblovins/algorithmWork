@@ -143,7 +143,23 @@ class DoublyLinkedList{
             }
         }
         return current;
+    }
 
+    // set() replacing the value of a node in a doubly linked list
+    // We can use the get method we set up, then just find the value
+
+    // Create a variable which is the result of the get method at the index passed to the function
+    // -If the get method returns a valid node, set the value of that node to be the value passed to the function
+    // -Return true
+    // Otherwise return false
+
+    set(index, val) {
+        let node = this.get(index);
+        if(node != null){
+            node.val = val;
+            return true;
+        }
+        return false;
     }
 }
 
@@ -167,7 +183,9 @@ list.unshift("New Guy!");
 // list.print()
 // list.reverse()
 // list.print()
-console.log(list.get(5))
+console.log(list.get(3))
+list.set(3, "Changed with set")
+console.log(list.get(3))
 // console.log(list);
 // console.log(list.head);
 // console.log(list.tail);
