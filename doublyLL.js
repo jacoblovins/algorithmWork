@@ -161,6 +161,38 @@ class DoublyLinkedList{
         }
         return false;
     }
+
+    // insert() adding a node based on a position
+    // We can optimize this starting from the beginning or the end like we did with the get method
+    // We can use the get method the do this
+
+    // If the index is less than zero or greater than or equal to the length, return false
+    // If the index is 0, unshift()
+    // If the index is the same as the length, push()
+    // Otherwise, create a new node
+    // Use the get method to access the index - 1
+    // Set the next and prev properties on the correct nodes to link everything together
+    // Increment the length
+    // Return true
+
+    insert(index, val) {
+
+        if(index < 0 || index > this.length) return false;
+        if(index === 0) return this.unshift(val);
+        if(index === this.length) return this.push(val);
+        let newNode = new Node(val);
+        let prevNode = this.get(index - 1);
+        let nextNode = prevNode.next;
+        prevNode.next = newNode;
+        newNode.prev = prevNode;
+        newNode.next = nextNode;
+        nextNode.prev = newNode;
+        this.length++;
+        return true;
+
+
+
+    }
 }
 
 const list = new DoublyLinkedList();
@@ -174,18 +206,7 @@ list.push(3);
 list.pop();
 list.shift();
 list.unshift("New Guy!");
-// list.shift()
-// list.unshift("First")
-// list.set(0, "Changed!")
-// list.insert(1, "Second changed!")
-// list.remove(1)
+list.insert(4, "inserted")
 
-// list.print()
-// list.reverse()
-// list.print()
-console.log(list.get(3))
-list.set(3, "Changed with set")
-console.log(list.get(3))
-// console.log(list);
-// console.log(list.head);
-// console.log(list.tail);
+console.log(list.get(4))
+
