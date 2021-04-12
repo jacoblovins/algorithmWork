@@ -190,6 +190,38 @@ class DoublyLinkedList{
         this.length++;
         return true;
     }
+
+    // remove() removing a node in a doubly linked list by a certain position
+    // We can again take advantage of the get method optimization
+
+    // If the index is less than zero or greater than or equal to the length, return undefined
+    // If the index is 0, shift()
+    // If the index is equal to the length - 1, pop()
+    // Use the get method to retrieve the item to be removed
+    // Update the next and prev properties to remove the found node from the list
+    // Set next and prev to null on the found node
+    // Decrement the length
+    // Return the removed node
+
+    remove(index) {
+        if(index < 0 || index >= this.length) return undefined;
+        if(index === 0) return this.shift();
+        if(index === this.length - 1) return this.pop();
+
+        let remNode = this.get(index);
+        let prevNode = remNode.prev;
+        let nexNode = remNode.next;
+
+        prevNode.next = nexNode;
+        nexNode.prev = prevNode;
+
+        remNode.next = null;
+        remNode.prev = null;
+
+        this.length--;
+        return remNode;
+
+    }
 }
 
 const list = new DoublyLinkedList();
@@ -200,10 +232,17 @@ list.push("something else");
 list.push(1);
 list.push(2);
 list.push(3);
-list.pop();
-list.shift();
-list.unshift("New Guy!");
-list.insert(4, "inserted")
-
+// list.pop();
+// list.shift();
+// list.unshift("New Guy!");
+// list.insert(4, "inserted")
+console.log(list.get(2))
+console.log(list.get(3))
 console.log(list.get(4))
+list.remove(3)
+console.log("----------------------------")
+console.log(list.get(2))
+console.log(list.get(3))
+console.log(list.get(4))
+
 
