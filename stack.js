@@ -49,15 +49,21 @@ class Stack{
             this.head.next = oldHead;
         }
         this.length++;
-        return this;
+        return this.length;
     }
 
     pop(){
+        if(this.length === 0) return null;
         let oldHead = this.head;
-        this.head = oldHead.next;
-        oldHead.next = null;
+        if(this.length === 1){
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.head = oldHead.next;
+            oldHead.next = null;
+        }
         this.length--;
-        return oldHead;
+        return oldHead.val;
     }
 }
 
@@ -67,6 +73,9 @@ stack.push(1);
 stack.push(2);
 stack.push(3);
 stack.push(4);
+stack.pop();
+stack.pop();
+stack.pop();
 console.log(stack.pop());
 
 console.log(stack);
