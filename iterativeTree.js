@@ -3,6 +3,7 @@ class Node{
         this.val = val;
         this.left = null;
         this.right = null;
+        this.count = 1;
     }
 }
 
@@ -27,16 +28,39 @@ class BinarySearchTree{
                 // If there is not, add that node as the left property
 
     insert(val){
-
         const newNode = new Node(val);
 
-        if(!this.root){
+        if(this.root === null){
             this.root = newNode;
-            return true;
+            return this;
         } else {
-            
+            let current = this.root;
+            if(val === current.val){
+                current.count++;
+                return this;
+            }
+            while(true){
+                if(val === current.val){
+                    current.count++;
+                    return this;
+                }
+                if(val < current.val){
+                    if(current.left === null){
+                        current.left = newNode;
+                        return this;
+                    } else {
+                        current = current.left;
+                    }
+                } else if(val > current.val){
+                    if(current.right === null){
+                        current.right = newNode;
+                        return this;
+                    } else {
+                        current = current.right;
+                    }
+                }
+            }
         }
-
     }
 }
 
@@ -49,6 +73,8 @@ tree.insert(12);
 tree.insert(11);
 tree.insert(15);
 tree.insert(3);
+tree.insert(10);
+tree.insert(12);
 
 console.log(tree);
 
