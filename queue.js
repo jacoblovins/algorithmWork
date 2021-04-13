@@ -64,7 +64,7 @@ class Queue{
         }
         oldHead.next = null;
         this.length--;
-        return oldHead;
+        return oldHead.val;
 
     }
 }
