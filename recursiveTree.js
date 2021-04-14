@@ -22,10 +22,10 @@ class BinarySearchTree{
             return true;
         } else if(newNode.val < current.left.val){
             current = current.left;
-            this.goLeft(newNode, current);
+            return this.goLeft(newNode, current);
         } else if(newNode.val > current.left.val){
             current = current.left;
-            this.goRight(newNode, current);
+            return this.goRight(newNode, current);
         }
     }
     goRight(newNode, current){
@@ -37,10 +37,10 @@ class BinarySearchTree{
             return true;
         } else if(newNode.val < current.right.val){
             current = current.right;
-            this.goLeft(newNode, current);
+            return this.goLeft(newNode, current);
         } else if(newNode.val > current.right.val){
             current = current.right;
-            this.goRight(newNode, current);
+            return this.goRight(newNode, current);
         }
     }
 
@@ -58,64 +58,53 @@ class BinarySearchTree{
                 return true;
             }
             if(newNode.val < current.val){
-                this.goLeft(newNode, current)
+                return this.goLeft(newNode, current)
             } else if(newNode.val > current.val){
-                this.goRight(newNode, current)
+                return this.goRight(newNode, current)
             }
         }
     }
 
     // find()
+
     searchLeft(val, current){
-        console.log("searchleft running")
         if(current.left === null){
             return false;
         } else if(val === current.left.val){
-            console.log("val === current.left.val")
             return true;
         } else if(val < current.left.val){
             current = current.left;
-            this.searchLeft(val, current)
+            return this.searchLeft(val, current)
         } else if(val > current.left.val){
             current = current.left;
-            this.searchRight(val, current)
+            return this.searchRight(val, current)
         }
     }
 
     searchRight(val, current){
-        console.log("searchRight running")
         if(current.right === null){
-            console.log("current.right.val === null")
             return false;
         } else if(val === current.right.val){
-            console.log("val === current.right.val")
             return true;
         } else if(val < current.right.val){
-            console.log("val < current.right.val")
             current = current.right;
-            this.searchLeft(val, current)
+            return this.searchLeft(val, current)
         } else if(val > current.right.val){
-            console.log("val > current.right.val")
             current = current.right;
-            this.searchRight(val, current)
+            return this.searchRight(val, current)
         }
     }
     
-
     find(val){
         let current = this.root;
         if(this.root === null){
-            console.log("root is null");
             return false;
         } else if(val === current.val){
-            console.log("value is here");
             return true;
         } else if(val < current.val){
-            console.log("value is less than current");
-            this.searchLeft(val, current)
+            return this.searchLeft(val, current);
         } else if(val > current.val){
-            console.log("value is greater than current");
-            this.searchRight(val, current)
+            return this.searchRight(val, current);
         }
     }
 }
@@ -132,7 +121,7 @@ tree.insert(3);
 tree.insert(10);
 tree.insert(12);
 
-console.log(tree.find(11))
+console.log(tree.find(16));
 
-// console.log(tree);
+console.log(tree);
 
