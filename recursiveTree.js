@@ -1,5 +1,5 @@
-class Node{
-    constructor(val){
+class Node {
+    constructor(val) {
         this.val = val;
         this.left = null;
         this.right = null;
@@ -7,29 +7,29 @@ class Node{
     }
 }
 
-class BinarySearchTree{
-    constructor(){
+class BinarySearchTree {
+    constructor() {
         this.root = null;
     }
 
     // insert()
 
-    insert(val){
+    insert(val) {
         const newNode = new Node(val);
-        if(!this.root){
+        if (!this.root) {
             this.root = newNode;
         } else {
             const search = node => {
-                if(newNode.val === node.val){
+                if (newNode.val === node.val) {
                     node.count++
-                } else if(newNode.val < node.val){
-                    if(!node.left){
+                } else if (newNode.val < node.val) {
+                    if (!node.left) {
                         node.left = newNode
                     } else {
                         search(node.left)
                     }
-                } else if(newNode.val > node.val){
-                    if(!node.right){
+                } else if (newNode.val > node.val) {
+                    if (!node.right) {
                         node.right = newNode
                     } else {
                         search(node.right)
@@ -40,49 +40,34 @@ class BinarySearchTree{
         }
     }
 
-
-
-
     // find()
 
-    searchLeft(val, current){
-        if(current.left === null){
+    find(val) {
+        if (!this.root) {
             return false;
-        } else if(val === current.left.val){
-            return true;
-        } else if(val < current.left.val){
-            current = current.left;
-            return this.searchLeft(val, current)
-        } else if(val > current.left.val){
-            current = current.left;
-            return this.searchRight(val, current)
-        }
-    }
-
-    searchRight(val, current){
-        if(current.right === null){
-            return false;
-        } else if(val === current.right.val){
-            return true;
-        } else if(val < current.right.val){
-            current = current.right;
-            return this.searchLeft(val, current)
-        } else if(val > current.right.val){
-            current = current.right;
-            return this.searchRight(val, current)
-        }
-    }
-    
-    find(val){
-        let current = this.root;
-        if(this.root === null){
-            return false;
-        } else if(val === current.val){
-            return true;
-        } else if(val < current.val){
-            return this.searchLeft(val, current);
-        } else if(val > current.val){
-            return this.searchRight(val, current);
+        } else {
+            const search = node => {
+                if (val === node.val) {
+                    return true;
+                } else if (val < node.val) {
+                    if (!node.left) {
+                        return false;
+                    } else if (val === node.left.val) {
+                        return true
+                    } else {
+                        return search(node.left);
+                    }
+                } else if (val > node.val) {
+                    if (!node.right) {
+                        return false;
+                    } else if (val === node.right.val) {
+                        return true
+                    } else {
+                        return search(node.right);
+                    }
+                }
+            }
+            return search(this.root)
         }
     }
 }
@@ -99,7 +84,7 @@ tree.insert(3);
 tree.insert(10);
 tree.insert(12);
 
-// console.log(tree.find(16));
+console.log(tree.find(3));
 
-console.log(tree);
+// console.log(tree);
 
