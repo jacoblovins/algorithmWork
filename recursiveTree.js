@@ -13,57 +13,35 @@ class BinarySearchTree{
     }
 
     // insert()
-    goLeft(newNode, current){
-        if(current.left === null){
-            current.left = newNode;
-            return true;
-        } else if(newNode.val === current.left.val){
-            current.left.count++;
-            return true;
-        } else if(newNode.val < current.left.val){
-            current = current.left;
-            return this.goLeft(newNode, current);
-        } else if(newNode.val > current.left.val){
-            current = current.left;
-            return this.goRight(newNode, current);
-        }
-    }
-    goRight(newNode, current){
-        if(current.right === null){
-            current.right = newNode;
-            return true;
-        } else if(newNode.val === current.right.val){
-            current.right.count++;
-            return true;
-        } else if(newNode.val < current.right.val){
-            current = current.right;
-            return this.goLeft(newNode, current);
-        } else if(newNode.val > current.right.val){
-            current = current.right;
-            return this.goRight(newNode, current);
-        }
-    }
 
     insert(val){
-
         const newNode = new Node(val);
-
         if(!this.root){
             this.root = newNode;
-            return true;
         } else {
-            let current = this.root;
-            if(newNode.val === current.val){
-                current.count++;
-                return true;
+            const search = node => {
+                if(newNode.val === node.val){
+                    node.count++
+                } else if(newNode.val < node.val){
+                    if(!node.left){
+                        node.left = newNode
+                    } else {
+                        search(node.left)
+                    }
+                } else if(newNode.val > node.val){
+                    if(!node.right){
+                        node.right = newNode
+                    } else {
+                        search(node.right)
+                    }
+                }
             }
-            if(newNode.val < current.val){
-                return this.goLeft(newNode, current)
-            } else if(newNode.val > current.val){
-                return this.goRight(newNode, current)
-            }
+            search(this.root)
         }
     }
+
+
+
 
     // find()
 
@@ -121,7 +99,7 @@ tree.insert(3);
 tree.insert(10);
 tree.insert(12);
 
-console.log(tree.find(16));
+// console.log(tree.find(16));
 
 console.log(tree);
 
