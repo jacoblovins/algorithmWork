@@ -60,22 +60,15 @@ class BinarySearchTree {
     bfs(){
         const queue = [];
         const visited = [];
+        let check;
 
         if(!this.root) return false;
         queue.push(this.root);
         while(queue.length > 0){
-            let check = queue.shift();
+            check = queue.shift();
             visited.push(check.val);
-            if(check.left){
-                queue.push(check.left)
-            } else {
-                continue
-            }
-            if(check.right){
-                queue.push(check.right)
-            } else {
-                continue
-            }
+            if(check.left) queue.push(check.left);
+            if(check.right) queue.push(check.right);
         }
         return visited;
     }
