@@ -23,37 +23,27 @@ class BinarySearchTree {
 
     insert(val) {
         const newNode = new Node(val);
-
-        if (this.root === null) {
+        if (!this.root) {
             this.root = newNode;
-            return this;
         } else {
-            let current = this.root;
-            if (val === current.val) {
-                current.count++;
-                return this;
-            }
-            while (true) {
-                if (val === current.val) {
-                    current.count++;
-                    return this;
-                }
-                if (val < current.val) {
-                    if (current.left === null) {
-                        current.left = newNode;
-                        return this;
+            const search = node => {
+                if (newNode.val === node.val) {
+                    node.count++
+                } else if (newNode.val < node.val) {
+                    if (!node.left) {
+                        node.left = newNode
                     } else {
-                        current = current.left;
+                        search(node.left)
                     }
-                } else if (val > current.val) {
-                    if (current.right === null) {
-                        current.right = newNode;
-                        return this;
+                } else if (newNode.val > node.val) {
+                    if (!node.right) {
+                        node.right = newNode
                     } else {
-                        current = current.right;
+                        search(node.right)
                     }
                 }
             }
+            search(this.root)
         }
     }
 
