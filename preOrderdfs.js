@@ -53,12 +53,8 @@ class BinarySearchTree {
         let current = this.root;
         const traverse = current => {
             visited.push(current.val);
-            if(current.left){
-                traverse(current.left);
-            }
-            if(current.right){
-                traverse(current.right);
-            }
+            if(current.left) traverse(current.left);
+            if(current.right) traverse(current.right);
         }
         traverse(current)
         return visited
