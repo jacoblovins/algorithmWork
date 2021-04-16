@@ -59,6 +59,22 @@ class BinarySearchTree {
         traverse(current)
         return visited
     }
+    
+    // Only changing the order of 1 line between pre and post
+    // Explore all children before visiting the node
+
+    postDfs(){
+        let visited = [];
+        if(!this.root) return false;
+        let current = this.root;
+        const traverse = current => {
+            if(current.left) traverse(current.left);
+            if(current.right) traverse(current.right);
+            visited.push(current.val); // just moved this line 
+        }
+        traverse(current)
+        return visited
+    }
 
 }
 
@@ -74,3 +90,4 @@ tree.insert(3);
 
 
 console.log(tree.preDfs());
+console.log(tree.postDfs());
