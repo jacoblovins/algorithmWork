@@ -4,7 +4,6 @@ class MaxBH {
     }
 
     insert(val) {
-
         this.values.push(val);
         let currentIndex = this.values.length -1;
         let parentIndex;
@@ -32,4 +31,4 @@ heap.insert(15);
 heap.insert(58);
 heap.insert(31);
 heap.insert(45);
-console.log(heap.insert(101));
+console.log(heap.insert(1));
