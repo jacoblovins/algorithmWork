@@ -76,6 +76,21 @@ class BinarySearchTree {
         return visited
     }
 
+    // in order dfs
+
+    inDfs(){
+        let visited = [];
+        if(!this.root) return false;
+        let current = this.root;
+        const traverse = current => {
+            if(current.left) traverse(current.left);
+            visited.push(current.val); // just moved this line 
+            if(current.right) traverse(current.right);
+        }
+        traverse(current)
+        return visited
+    }
+
 }
 
 const tree = new BinarySearchTree();
@@ -91,3 +106,4 @@ tree.insert(3);
 
 console.log(tree.preDfs());
 console.log(tree.postDfs());
+console.log(tree.inDfs());
