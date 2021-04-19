@@ -9,8 +9,8 @@ class MaxBH {
         let parentIndex;
         let parentVal;
         while(val > this.values[Math.floor((currentIndex - 1) / 2)]){
-            parentVal = this.values[Math.floor((currentIndex - 1) / 2)];
             parentIndex = Math.floor((currentIndex - 1) / 2);
+            parentVal = this.values[parentIndex];
             this.values[parentIndex] = val;
             this.values[currentIndex] = parentVal;
             currentIndex = parentIndex;
