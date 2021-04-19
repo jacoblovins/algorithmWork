@@ -38,25 +38,41 @@ class MaxBH {
         // Return the old root
 
     extractMax(){
-        // const max = this.values.shift();
-        // let current = this.values.pop();
-        // this.values.unshift(current);
-        
-        // let parentIdx = 0;
-        // let leftIdx = (parentIdx * 2) + 1;
-        // let rightIdx = (parentIdx * 2) + 2;
-        // if(current < this.values[leftIdx] && current < this.values[rightIdx]){
-        //     let maxChild = Math.max(this.values[leftIdx], this.values[rightIdx]);
-        // } else if(current < this.values[leftIdx]){
+        const max = this.values.shift();
+        let current = this.values.pop();
+        this.values.unshift(current);
+        this.sinkDown();
+        return max;
+    }
 
+    sinkDown(){
+        let idx = 0;
+        const length = this.values.length;
+        const element = this.values[0];
 
-        // } else if(current < this.values[rightIdx]){
+        while(true){
+            let leftChildIdx = (2 * idx) + 1;
+            let rightChildIdx = (2 * idx) + 2;
+            let leftChild, rightChild;
+            let swap = null;
 
-            
-        // }
-
-
-        
+            if(leftChildIdx < length){
+                leftChild = this.values[leftChildIdx];
+                if(leftChild > element){
+                    swap = leftChildIdx;
+                }
+            }
+            if(rightChildIdx < length){
+                rightChild = this.values[rightChildIdx];
+                if((swap === null && rightChild > element) || (swap !== null && rightChild > leftChild)){
+                    swap = rightChildIdx;
+                }
+            }
+            if(swap === null) break;
+            this.values[idx] = this.values[swap];
+            this.values[swap] = element;
+            idx = swap;
+        }
     }
 }
 
@@ -73,4 +89,5 @@ heap.insert(58);
 heap.insert(31);
 heap.insert(45);
 console.log(heap.insert(1));
-heap.extractMax();
+console.log(heap.extractMax());
+console.log(heap)
