@@ -40,8 +40,10 @@ class MaxBH {
     extractMax(){
         const max = this.values.shift();
         let current = this.values.pop();
-        this.values.unshift(current);
-        this.sinkDown();
+        if(this.values.length > 0){
+            this.values.unshift(current);
+            this.sinkDown();
+        }
         return max;
     }
 
@@ -89,5 +91,16 @@ heap.insert(58);
 heap.insert(31);
 heap.insert(45);
 console.log(heap.insert(1));
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
 console.log(heap.extractMax());
 console.log(heap)
