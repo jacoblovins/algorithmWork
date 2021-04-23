@@ -1,30 +1,34 @@
-// Going to use a Min Binary Heap
+
 class PriorityQueue {
     constructor(){
         this.values = [];
     }
-    insert(val) {
-        this.values.push(val);
-        let currentIndex = this.values.length -1;
-        let parentIndex;
-        let parentVal;
-        while(val > this.values[Math.floor((currentIndex - 1) / 2)]){
-            parentIndex = Math.floor((currentIndex - 1) / 2);
-            parentVal = this.values[parentIndex];
-            this.values[parentIndex] = val;
-            this.values[currentIndex] = parentVal;
-            currentIndex = parentIndex;
-        }
-        return this.values;
+    enqueue(val, priority) {
+        let newNode = new Node(val, priority)
+        this.values.push(newNode);
+        this.bubbleUp();
     }
-    extractMax(){
-        const max = this.values.shift();
-        let current = this.values.pop();
+    bubbleUp(){
+        let idx = this.values.length -1;
+        const element = this.values[idx];
+        while(idx > 0){
+            let parentIndex = Math.floor((idx - 1) / 2);
+            let parent = this.values[parentIndex];
+            if(element.priority >= parent.priority) break;
+            this.values[parentIndex] = element;
+            this.values[idx] = parent;
+            idx = parentIndex;
+        }
+    }
+
+    dequeue(){
+        const min = this.values[0];
+        let end = this.values.pop();
         if(this.values.length > 0){
-            this.values.unshift(current);
+            this.values[0] = end;
             this.sinkDown();
         }
-        return max;
+        return min;
     }
     sinkDown(){
         let idx = 0;
@@ -39,13 +43,13 @@ class PriorityQueue {
 
             if(leftChildIdx < length){
                 leftChild = this.values[leftChildIdx];
-                if(leftChild > element){
+                if(leftChild.priority < element.priority){
                     swap = leftChildIdx;
                 }
             }
             if(rightChildIdx < length){
                 rightChild = this.values[rightChildIdx];
-                if((swap === null && rightChild > element) || (swap !== null && rightChild > leftChild)){
+                if((swap === null && rightChild.priority < element.priority) || (swap !== null && rightChild.priority < leftChild.priority)){
                     swap = rightChildIdx;
                 }
             }
@@ -63,3 +67,18 @@ class Node {
         this.priority = priority
     }
 }
+
+let pq = new PriorityQueue();
+
+pq.enqueue("common cold", 5);
+pq.enqueue("gunshot wound", 1);
+pq.enqueue("high fever", 4);
+pq.enqueue("broken arm", 2);
+pq.enqueue("glass in foot", 3);
+console.log(pq.dequeue());
+console.log(pq.dequeue());
+console.log(pq.dequeue());
+console.log(pq.dequeue());
+console.log(pq.dequeue());
+
+console.log(pq);
