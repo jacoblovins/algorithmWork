@@ -57,4 +57,27 @@ class HashTable{
         }
         return total;
     }
+
+
+    // set()
+    // Accepts a key and a value
+    // Hashes the key
+    // Stores the key Value pair in the hash table array via separate chaining
+
+    set(key, value){
+
+    }
+
+
+    // get()
+    // Accepts a key
+    // Hashes the key
+    // Retrieves the key value pair in the hash table
+    // If key isnt found, return undefined
+
+    get(key){
+
+    }
+
+
 }
