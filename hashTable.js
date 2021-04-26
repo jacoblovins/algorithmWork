@@ -43,7 +43,7 @@
 
 
 class HashTable{
-    constructor(size=4){
+    constructor(size=53){
         this.keyMap = new Array(size);
     }
 
@@ -80,13 +80,21 @@ class HashTable{
     // If key isnt found, return undefined
 
     get(key){
-
+        const index = this._hash(key);
+        if(this.keyMap[index]){
+            for(let i = 0; i < this.keyMap[index].length; i++){
+                if(this.keyMap[index][i][0] === key){
+                    return this.keyMap[index][i];
+                }
+            }
+        }
+        return undefined;
     }
 
 
 }
 
-const ht = new HashTable();
+const ht = new HashTable(17);
 
 ht.set("hellow old", "goodbye!!");
 ht.set("kljhg", "kj");
@@ -94,4 +102,4 @@ ht.set("lkhj", "ghjk");
 ht.set("mbmnb", "kj");
 ht.set("uytu", "hj");
 
-console.log(ht);
+console.log(ht.get("uytu"));
