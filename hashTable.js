@@ -22,21 +22,39 @@
 // <--------------------------------------------------------------------------------------------------------------->
 
 
-// Refining the hash
+// // Refining the hash
 
-// The prime number in the hash is helpful in spreading out the keys more uniformly
-// Also helps a lot to use a prime number as the length of the array
+// // The prime number in the hash is helpful in spreading out the keys more uniformly
+// // Also helps a lot to use a prime number as the length of the array
 
-function hash(key, arrayLen){
-    let total = 0;
-    let WEIRD_PRIME = 31;
-    for(let i = 0; i < Math.min(key.length, 100); i++){
-        let char = key[i];
-        let value = char.charCodeAt(0) - 96;
-        total = (total * WEIRD_PRIME + value) % arrayLen;
+// function hash(key, arrayLen){
+//     let total = 0;
+//     let WEIRD_PRIME = 31;
+//     for(let i = 0; i < Math.min(key.length, 100); i++){
+//         let char = key[i];
+//         let value = char.charCodeAt(0) - 96;
+//         total = (total * WEIRD_PRIME + value) % arrayLen;
+//     }
+//     return total;
+// }
+
+
+// console.log(hash("he", 13));
+
+
+class HashTable{
+    constructor(size=53){
+        this.keyMap = new Array(size);
     }
-    return total;
+
+    _hash(key){
+        let total = 0;
+        let WEIRD_PRIME = 31;
+        for(let i = 0; i < Math.min(key.length, 100); i++){
+            let char = key[i];
+            let value = char.charCodeAt(0) - 96;
+            total = (total * WEIRD_PRIME + value) % this.keyMap.length;
+        }
+        return total;
+    }
 }
-
-
-console.log(hash("he", 13));
