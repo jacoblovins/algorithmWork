@@ -1,19 +1,42 @@
-// String only hash function
+// // String only hash function
 
-// hash("pink", 100) - should hash pink and store it in an array between 0 and 100
+// // hash("pink", 100) - should hash pink and store it in an array between 0 and 100
 
-// Problems with this hash function:
-    // It only hashes strings
-    // Not constant time - linear in key length takes longer to hash a longer string
-    // Could be a little more random
+// // Problems with this hash function:
+//     // It only hashes strings
+//     // Not constant time - linear in key length takes longer to hash a longer string
+//     // Could be a little more random
+
+// function hash(key, arrayLen){
+//     let total = 0;
+//     for(let char of key){
+//         let value = char.charCodeAt(0) - 96;
+//         total = (total + value) % arrayLen;
+//     }
+//     return total;
+// }
+
+// console.log(hash("cyan", 10));
+
+
+// <--------------------------------------------------------------------------------------------------------------->
+
+
+// Refining the hash
+
+// The prime number in the hash is helpful in spreading out the keys more uniformly
+// Also helps a lot to use a prime number as the length of the array
 
 function hash(key, arrayLen){
     let total = 0;
-    for(let char of key){
+    let WEIRD_PRIME = 31;
+    for(let i = 0; i < Math.min(key.length, 100); i++){
+        let char = key[i];
         let value = char.charCodeAt(0) - 96;
-        total = (total + value) % arrayLen;
+        total = (total * WEIRD_PRIME + value) % arrayLen;
     }
     return total;
 }
 
-console.log(hash("cyan", 10));
+
+console.log(hash("he", 13));
