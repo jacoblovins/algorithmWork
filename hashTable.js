@@ -43,7 +43,7 @@
 
 
 class HashTable{
-    constructor(size=53){
+    constructor(size=4){
         this.keyMap = new Array(size);
     }
 
@@ -53,7 +53,7 @@ class HashTable{
         for(let i = 0; i < Math.min(key.length, 100); i++){
             let char = key[i];
             let value = char.charCodeAt(0) - 96;
-            total = (total * WEIRD_PRIME + value) % this.keyMap.length;
+            total = Math.abs((total * WEIRD_PRIME + value) % this.keyMap.length);
         }
         return total;
     }
@@ -65,7 +65,11 @@ class HashTable{
     // Stores the key Value pair in the hash table array via separate chaining
 
     set(key, value){
-
+        const index = this._hash(key);
+        if(!this.keyMap[index]){
+            this.keyMap[index] = [];
+        }
+        this.keyMap[index].push([key, value]);
     }
 
 
@@ -81,3 +85,13 @@ class HashTable{
 
 
 }
+
+const ht = new HashTable();
+
+ht.set("hellow old", "goodbye!!");
+ht.set("kljhg", "kj");
+ht.set("lkhj", "ghjk");
+ht.set("mbmnb", "kj");
+ht.set("uytu", "hj");
+
+console.log(ht);
