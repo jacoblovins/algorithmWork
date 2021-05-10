@@ -6,9 +6,9 @@ class Graph {
         this.adjacencyList = {};
     }
 
-    // addVertex(vertex){
-    //     this.adjacencyList[vertex] = [];
-    // }
+    addVertex(vertex){
+        this.adjacencyList[vertex] = [];
+    }
 
     // // find vertex1 in the list and push vertex2 to it's array
     // // find vertex2 and push vertex1 go it's array
@@ -33,10 +33,10 @@ class Graph {
 
 const g = new Graph();
 
-// g.addVertex("hello");
-// g.addVertex("goodbye");
-// g.addVertex("something");
-// g.addVertex("another");
+g.addVertex("hello");
+g.addVertex("goodbye");
+g.addVertex("something");
+g.addVertex("another");
 // g.addEdge("hello", "goodbye")
 // g.addEdge("hello", "another")
 // g.addEdge("goodbye", "something")
