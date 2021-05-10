@@ -17,14 +17,14 @@ class Graph {
         this.adjacencyList[v2].push(v1);
     }
 
-    // removeEdge(vertex1, vertex2){
-    //     this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
-    //         v => v !== vertex2
-    //     );
-    //     this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
-    //         v => v !== vertex1
-    //     );
-    // }
+    removeEdge(vertex1, vertex2){
+        this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
+            v => v !== vertex2
+        );
+        this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
+            v => v !== vertex1
+        );
+    }
 
     // removeVertex(vertex){
 
@@ -41,6 +41,6 @@ g.addEdge("hello", "goodbye")
 g.addEdge("hello", "another")
 g.addEdge("goodbye", "something")
 
-// g.removeEdge("hello", "goodbye")
+g.removeEdge("hello", "goodbye")
 
 console.log(g);
