@@ -26,9 +26,13 @@ class Graph {
         );
     }
 
-    // removeVertex(vertex){
-
-    // }
+    removeVertex(vertex){
+        while(this.adjacencyList[vertex].length){
+            const adjacentVertex = this.adjacencyList[vertex].pop();
+            this.removeEdge(vertex, adjacentVertex);
+        }
+        delete this.adjacencyList[vertex];
+    }
 }
 
 const g = new Graph();
@@ -40,7 +44,9 @@ g.addVertex("another");
 g.addEdge("hello", "goodbye")
 g.addEdge("hello", "another")
 g.addEdge("goodbye", "something")
+g.addEdge("another", "something")
+g.addEdge("hello", "something")
 
-g.removeEdge("hello", "goodbye")
+g.removeVertex("another")
 
 console.log(g);
