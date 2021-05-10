@@ -33,20 +33,64 @@ class Graph {
         }
         delete this.adjacencyList[vertex];
     }
+
+
+
+    // Traversal: going through/visiting every vertex in the graph
+    // There's no root so you need to specify a start point
+    // Depth first search Recursive
+        // Pass in your starting vertex as the parameter to your function
+        // Create a list to store the end result, to be returned at the very end
+        // Create an object to store visited vertices
+        // Create a helper function which accepts a vertex
+            // The helper function should return early if the vertex is empty
+            // The helper function shold place the vertex it accepts into the visited object and push that vertex into the results array.
+            // Loop over all of the values in the adjacencyList for that vertex
+            // If any of those values have not been visited, recursively invoke the helper function with that vertex
+        // Invoke the helper funciton with the starting vertex
+        // Return the result array
+
+        depthFirstRecursive(start){
+            const result = [];
+            const visited = {};
+            const adjacencyList = this.adjacencyList;
+
+            (function dfs(vertex){
+                if(!vertex) return null;
+                visited[vertex] = true;
+                result.push(vertex);
+                adjacencyList[vertex].forEach(neighbor => {
+                    if(!visited[neighbor]){
+                        return dfs(neighbor)
+                    }
+                });
+            })(start);
+            return result;
+        }
+
+        // Depth First Search Iterative:
+
+
 }
 
 const g = new Graph();
 
-g.addVertex("hello");
-g.addVertex("goodbye");
-g.addVertex("something");
-g.addVertex("another");
-g.addEdge("hello", "goodbye")
-g.addEdge("hello", "another")
-g.addEdge("goodbye", "something")
-g.addEdge("another", "something")
-g.addEdge("hello", "something")
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
+g.addEdge("A", "B")
+g.addEdge("A", "C")
+g.addEdge("B", "D")
+g.addEdge("C", "E")
+g.addEdge("D", "E")
+g.addEdge("D", "F")
+g.addEdge("E", "F")
 
-g.removeVertex("another")
+console.log(g.depthFirstRecursive("A"))
 
-console.log(g);
+// g.removeVertex("another")
+
+// console.log(g);
