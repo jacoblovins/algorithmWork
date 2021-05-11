@@ -82,7 +82,24 @@ class Graph {
         // Return the result array
 
     depthFirstIterative(start){
+        const stack = [start];
+        const result = [];
+        const visited = {};
+        let currentVertex;
 
+        visited[start] = true;
+        while(stack.length){
+            currentVertex = stack.pop();
+            result.push(currentVertex);
+
+            this.adjacencyList[currentVertex].forEach(neighbor => {
+                if(!visited[neighbor]){
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            });
+        }
+        return result;
     }
 }
 
@@ -103,7 +120,7 @@ g.addEdge("D", "E");
 g.addEdge("D", "F");
 g.addEdge("E", "F");
 
-console.log(g.depthFirstRecursive("A"));
+console.log(g.depthFirstIterative("A"));
 
 // g.removeVertex("another")
 
