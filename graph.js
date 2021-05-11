@@ -121,7 +121,3 @@ g.addEdge("D", "F");
 g.addEdge("E", "F");
 
 console.log(g.depthFirstIterative("A"));
-
-// g.removeVertex("another")
-
-// console.log(g);
