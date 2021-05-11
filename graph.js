@@ -35,7 +35,6 @@ class Graph {
     }
 
 
-
     // Traversal: going through/visiting every vertex in the graph
     // There's no root so you need to specify a start point
     // Depth first search Recursive
@@ -50,28 +49,43 @@ class Graph {
         // Invoke the helper funciton with the starting vertex
         // Return the result array
 
-        depthFirstRecursive(start){
-            const result = [];
-            const visited = {};
-            const adjacencyList = this.adjacencyList;
+    depthFirstRecursive(start){
+        const result = [];
+        const visited = {};
+        const adjacencyList = this.adjacencyList;
 
-            (function dfs(vertex){
-                if(!vertex) return null;
-                visited[vertex] = true;
-                result.push(vertex);
-                adjacencyList[vertex].forEach(neighbor => {
-                    if(!visited[neighbor]){
-                        return dfs(neighbor)
-                    }
-                });
-            })(start);
-            return result;
-        }
+        (function dfs(vertex){
+            if(!vertex) return null;
+            visited[vertex] = true;
+            result.push(vertex);
+            adjacencyList[vertex].forEach(neighbor => {
+                if(!visited[neighbor]){
+                    return dfs(neighbor)
+                }
+            });
+        })(start);
+        return result;
+    }
 
-        // Depth First Search Iterative:
+    // DFS Iterative
+        // The function should accept a starting node
+        // Creat a stack to help keep track of vertices (use a list/array)
+        // Create a list to store the end result to be returned at the end
+        // Create an object to store visited vertices
+        // Add the starting vertex to the stack and mark it visited
+        // While the stack has something in it:
+            // Pop the next vertex from the stack
+            // If that vertex hasn't been visited yet:
+                // Mark it as visited
+                // Add it ot the result list
+                // Push all of its neighbors into the stack
+        // Return the result array
 
+    depthFirstIterative(start){
 
+    }
 }
+
 
 const g = new Graph();
 
@@ -81,15 +95,15 @@ g.addVertex("C");
 g.addVertex("D");
 g.addVertex("E");
 g.addVertex("F");
-g.addEdge("A", "B")
-g.addEdge("A", "C")
-g.addEdge("B", "D")
-g.addEdge("C", "E")
-g.addEdge("D", "E")
-g.addEdge("D", "F")
-g.addEdge("E", "F")
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
+g.addEdge("C", "E");
+g.addEdge("D", "E");
+g.addEdge("D", "F");
+g.addEdge("E", "F");
 
-console.log(g.depthFirstRecursive("A"))
+console.log(g.depthFirstRecursive("A"));
 
 // g.removeVertex("another")
 
